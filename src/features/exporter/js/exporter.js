@@ -1020,7 +1020,9 @@
             if (self.isIE() || navigator.appVersion.indexOf("Edge") !== -1) {
               self.downloadPDF(grid.options.exporterPdfFilename, docDefinition);
             } else {
-              pdfMake.createPdf(docDefinition).open();
+              //Changed .open() to .download() beacause of Google Chrome crush when exporting large ammounts of data...
+              //pdfMake.createPdf(docDefinition).open();
+              pdfMake.createPdf(docDefinition).download();
             }
           });
         },
